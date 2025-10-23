@@ -1,88 +1,104 @@
-import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '../../utils/transitions';
+import { motion } from "framer-motion";
 
-interface GalleryItem {
-  id: number;
-  title: string;
-  category: string;
-  color: string;
-  height: string;
-}
-
-const galleryItems: GalleryItem[] = [
-  { id: 1, title: 'Brand Identity for Tech Startup', category: 'Branding', color: 'from-purple-400 to-pink-400', height: 'h-64' },
-  { id: 2, title: 'E-Commerce Mobile App', category: 'UI/UX', color: 'from-blue-400 to-cyan-400', height: 'h-80' },
-  { id: 3, title: 'SaaS Dashboard Design', category: 'Web Design', color: 'from-green-400 to-emerald-400', height: 'h-72' },
-  { id: 4, title: 'Restaurant Website', category: 'Web Design', color: 'from-orange-400 to-red-400', height: 'h-64' },
-  { id: 5, title: 'Fashion Brand Guidelines', category: 'Branding', color: 'from-pink-400 to-rose-400', height: 'h-80' },
-  { id: 6, title: 'Fitness Tracking App', category: 'Mobile', color: 'from-indigo-400 to-purple-400', height: 'h-72' },
-  { id: 7, title: 'Corporate Website Redesign', category: 'Web Design', color: 'from-teal-400 to-green-400', height: 'h-64' },
-  { id: 8, title: 'Music Streaming Interface', category: 'UI/UX', color: 'from-violet-400 to-purple-400', height: 'h-80' },
-  { id: 9, title: 'Real Estate Platform', category: 'Web Design', color: 'from-amber-400 to-orange-400', height: 'h-72' },
+const galleryItems = [
+  {
+    title: "Brand Identity",
+    category: "Branding",
+    color: "bg-pink-500",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop",
+    size: "large"
+  },
+  {
+    title: "UI Design",
+    category: "Interface",
+    color: "bg-cyan-400",
+    image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?w=800&auto=format&fit=crop",
+    size: "medium"
+  },
+  {
+    title: "Packaging",
+    category: "Product",
+    color: "bg-yellow-400",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop",
+    size: "medium"
+  },
+  {
+    title: "Poster Art",
+    category: "Print",
+    color: "bg-purple-500",
+    image: "https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?w=800&auto=format&fit=crop",
+    size: "large"
+  },
+  {
+    title: "Web Design",
+    category: "Digital",
+    color: "bg-green-400",
+    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&auto=format&fit=crop",
+    size: "medium"
+  },
+  {
+    title: "Illustration",
+    category: "Art",
+    color: "bg-orange-400",
+    image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&auto=format&fit=crop",
+    size: "medium"
+  }
 ];
 
-export const Gallery = () => {
+export default function DesignGallery() {
   return (
-    <section id="gallery" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section className="py-20 px-4 bg-[#FAFAF9]">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center"
-          >
-            Featured Work
-          </motion.h2>
-          
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg sm:text-xl text-gray-600 mb-12 sm:mb-16 text-center"
-          >
-            A curated selection of my design projects
-          </motion.p>
-          
-          {/* Masonry Grid */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 sm:gap-8 space-y-6 sm:space-y-8">
-            {galleryItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                variants={fadeInUp}
-                custom={index}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                className="break-inside-avoid"
-              >
-                <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow cursor-pointer">
-                  <div className={`bg-gradient-to-br ${item.color} ${item.height} flex items-center justify-center`}>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center p-6">
-                        <h3 className="text-white text-xl sm:text-2xl font-bold mb-2">
-                          {item.title}
-                        </h3>
-                        <span className="inline-block px-4 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm">
-                          {item.category}
-                        </span>
+          <h2 className="text-5xl md:text-7xl font-black mb-4 inline-block px-8 py-4 bg-white border-4 border-black transform -rotate-1"
+            style={{ boxShadow: "8px 8px 0px #000" }}>
+            MY WORK
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {galleryItems.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className={`group cursor-pointer ${
+                item.size === 'large' ? 'md:col-span-2' : ''
+              }`}
+            >
+              <div className="relative overflow-hidden rounded-2xl border-4 border-black"
+                style={{ boxShadow: "8px 8px 0px #000" }}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-64 md:h-80 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
+                      <div className={`inline-block px-6 py-3 ${item.color} rounded-xl border-4 border-black mb-4`}
+                        style={{ boxShadow: "4px 4px 0px #000" }}>
+                        <span className="font-black text-lg">{item.category}</span>
                       </div>
+                      <h3 className="text-3xl font-black text-white">{item.title}</h3>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 sm:mt-16 text-center"
-          >
-            <button className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl">
-              View All Projects
-            </button>
-          </motion.div>
-        </motion.div>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
+}
