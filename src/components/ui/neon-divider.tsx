@@ -100,7 +100,6 @@ ctx.fillRect(0, 0, canvas.width, height);
           ctx.clearRect(0, 0, canvas.width, canvas.height);
 
           const zigzagWidth = 20;
-          const zigzagHeight = height * 2;
           const segments = Math.ceil(canvas.width / zigzagWidth);
 
           ctx.beginPath();

@@ -74,7 +74,7 @@ export default function About() {
                 viewport={{ once: true }}
                 className="flex space-x-6"
               >
-                {['GitHub', 'LinkedIn', 'Twitter'].map((social, index) => (
+                {['GitHub', 'LinkedIn', 'Twitter'].map((social) => (
                   <motion.a
                     key={social}
                     href={`https://${social.toLowerCase()}.com`}

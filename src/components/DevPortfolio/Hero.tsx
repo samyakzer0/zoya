@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Code, Zap, Shield } from "lucide-react";
 import Particles from "./Particles";
 import { HyperText } from "../ui/hyper-text";
 
