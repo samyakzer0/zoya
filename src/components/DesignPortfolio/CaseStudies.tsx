@@ -7,7 +7,7 @@ const caseStudies = [
     client: "TechStart Inc",
     year: "2024",
     description: "Complete rebrand and mobile app design for a growing tech startup",
-    color: "bg-pink-500",
+    color: "bg-misty-rose",
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop"
   },
   {
@@ -15,7 +15,7 @@ const caseStudies = [
     client: "Fashion Forward",
     year: "2024",
     description: "Modern e-commerce platform with unique shopping experience",
-    color: "bg-cyan-400",
+    color: "bg-periwinkle",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop"
   },
   {
@@ -23,7 +23,7 @@ const caseStudies = [
     client: "Studio X",
     year: "2023",
     description: "Award-winning portfolio website with interactive animations",
-    color: "bg-yellow-400",
+    color: "bg-mindaro",
     image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&auto=format&fit=crop"
   }
 ];
@@ -38,7 +38,7 @@ export default function DesignCaseStudies() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-7xl font-black mb-4 inline-block px-8 py-4 bg-purple-500 text-white border-4 border-black transform rotate-1"
+          <h2 className="text-5xl md:text-7xl font-black mb-4 inline-block px-8 py-4 bg-periwinkle text-white border-4 border-black transform rotate-1"
             style={{ boxShadow: "8px 8px 0px #000" }}>
             CASE STUDIES
           </h2>

@@ -4,42 +4,42 @@ const galleryItems = [
   {
     title: "Brand Identity",
     category: "Branding",
-    color: "bg-pink-500",
+    color: "bg-misty-rose",
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop",
     size: "large"
   },
   {
     title: "UI Design",
     category: "Interface",
-    color: "bg-cyan-400",
+    color: "bg-periwinkle",
     image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?w=800&auto=format&fit=crop",
     size: "medium"
   },
   {
     title: "Packaging",
     category: "Product",
-    color: "bg-yellow-400",
+    color: "bg-mindaro",
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop",
     size: "medium"
   },
   {
     title: "Poster Art",
     category: "Print",
-    color: "bg-purple-500",
+    color: "bg-periwinkle",
     image: "https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?w=800&auto=format&fit=crop",
     size: "large"
   },
   {
     title: "Web Design",
     category: "Digital",
-    color: "bg-green-400",
+    color: "bg-mindaro",
     image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&auto=format&fit=crop",
     size: "medium"
   },
   {
     title: "Illustration",
     category: "Art",
-    color: "bg-orange-400",
+    color: "bg-mindaro",
     image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&auto=format&fit=crop",
     size: "medium"
   }
@@ -55,7 +55,7 @@ export default function DesignGallery() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-7xl font-black mb-4 inline-block px-8 py-4 bg-white border-4 border-black transform -rotate-1"
+          <h2 className="text-5xl md:text-7xl font-black mb-4 inline-block px-8 py-4 bg-misty-rose text-white border-4 border-black transform -rotate-1"
             style={{ boxShadow: "8px 8px 0px #000" }}>
             MY WORK
           </h2>
