@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Sparkles, Heart, Zap } from "lucide-react";
 import { useState, useRef } from "react";
 
 export default function DesignHero() {
