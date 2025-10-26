@@ -1,31 +1,29 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import type { LucideIcon } from "lucide-react"
 import { cn } from "../../utils"
 import { usePortfolioStore } from "../../store/portfolioStore"
+import type { ViewMode } from "../../store/portfolioStore"
 
 interface NavItem {
   name: string
   url: string
   icon: LucideIcon
-  view: string
+  view: ViewMode
 }
 
 interface NavBarProps {
   items: NavItem[]
-  className?: string
   defaultActive?: string
 }
 
-export function AnimeNavBar({ items, className, defaultActive = "Home" }: NavBarProps) {
+export function AnimeNavBar({ items, defaultActive = "Home" }: NavBarProps) {
   const { currentView, setView, isTransitioning } = usePortfolioStore()
   const [mounted, setMounted] = useState(false)
   const [hoveredTab, setHoveredTab] = useState<string | null>(null)
   const [activeTab, setActiveTab] = useState<string>(defaultActive)
-  const [isMobile, setIsMobile] = useState(false)
-  const [scrollPercent, setScrollPercent] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
 
   // Update activeTab based on currentView
@@ -40,22 +38,10 @@ export function AnimeNavBar({ items, className, defaultActive = "Home" }: NavBar
     setMounted(true)
   }, [])
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-      const percent = Math.round((scrollTop / scrollHeight) * 100)
-      setScrollPercent(percent)
       setIsScrolled(scrollTop > 0)
     }
 

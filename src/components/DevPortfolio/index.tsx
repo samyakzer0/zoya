@@ -9,31 +9,32 @@ import DevContact from './Contact';
 import { AnimeNavBar } from '../ui/anime-navbar';
 import NeonDivider from '../ui/neon-divider';
 import { Home, FileText, CreditCard, Info } from 'lucide-react';
+import type { ViewMode } from '../../store/portfolioStore';
 
 const items = [
   {
     name: "Home",
     url: "#",
     icon: Home,
-    view: "landing",
+    view: "landing" as ViewMode,
   },
   {
     name: "Dev",
     url: "#",
     icon: FileText,
-    view: "dev",
+    view: "dev" as ViewMode,
   },
   {
     name: "Design",
     url: "#",
     icon: CreditCard,
-    view: "design",
+    view: "design" as ViewMode,
   },
   {
     name: "About",
     url: "#",
     icon: Info,
-    view: "landing",
+    view: "landing" as ViewMode,
   },
 ];
 
