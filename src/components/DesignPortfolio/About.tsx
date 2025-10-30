@@ -11,26 +11,26 @@ const skills = [
  
 ];
 
-const experiences = [
-  {
-    title: "Senior Designer",
-    company: "Creative Studio X",
-    year: "2022 - Present",
-    description: "Leading design projects for top-tier clients, focusing on innovative user experiences."
-  },
-  {
-    title: "UI/UX Designer",
-    company: "TechStart Inc",
-    year: "2020 - 2022",
-    description: "Developed mobile and web interfaces that increased user engagement by 40%."
-  },
-  {
-    title: "Junior Designer",
-    company: "Fashion Forward",
-    year: "2019 - 2020",
-    description: "Collaborated on e-commerce designs and brand strategies."
-  }
-];
+// const experiences = [
+//   {
+//     title: "Senior Designer",
+//     company: "Creative Studio X",
+//     year: "2022 - Present",
+//     description: "Leading design projects for top-tier clients, focusing on innovative user experiences."
+//   },
+//   {
+//     title: "UI/UX Designer",
+//     company: "TechStart Inc",
+//     year: "2020 - 2022",
+//     description: "Developed mobile and web interfaces that increased user engagement by 40%."
+//   },
+//   {
+//     title: "Junior Designer",
+//     company: "Fashion Forward",
+//     year: "2019 - 2020",
+//     description: "Collaborated on e-commerce designs and brand strategies."
+//   }
+// ];
 
 export default function DesignAbout() {
   return (
@@ -87,7 +87,7 @@ export default function DesignAbout() {
                 <div className="bg-periwinkle p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-black shadow-[6px_6px_0px_#000] md:shadow-[12px_12px_0px_#000]">
                   <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-4 text-white">Skills & Expertise</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {skills.map((skill, index) => (
+                    {skills.map((skill) => (
                       <div key={skill} className="bg-white px-3 sm:px-4 py-2 rounded-lg sm:rounded-xl border-2 border-black font-bold text-sm sm:text-base shadow-[3px_3px_0px_#000] md:shadow-[4px_4px_0px_#000]">
                         {skill}
                       </div>
