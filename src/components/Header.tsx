@@ -61,19 +61,19 @@ export const Header = () => {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-8">
+        <div className="flex items-center justify-between h-12 sm:h-16 lg:h-20">
           {/* Logo/Brand */}
-          <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Portfolio
+          <div className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            ZOYA IMAM
           </div>
           
           {/* Toggle Switch */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
             <button
               onClick={() => handleLabelClick('dev')}
               disabled={!isActive || isTransitioning}
-              className={`text-sm sm:text-base font-medium transition-all duration-300 ${
+              className={`text-xs sm:text-sm lg:text-base font-medium transition-all duration-300 ${
                 isActive && isDevActive
                   ? 'text-blue-600 dark:text-blue-400'
                   : isActive
@@ -87,7 +87,7 @@ export const Header = () => {
             <button
               onClick={handleToggle}
               disabled={!isActive || isTransitioning}
-              className={`relative w-14 sm:w-16 h-7 sm:h-8 rounded-full transition-all duration-300 ${
+              className={`relative w-12 sm:w-14 lg:w-16 h-6 sm:h-7 lg:h-8 rounded-full transition-all duration-300 ${
                 isActive
                   ? isDevActive
                     ? 'bg-blue-600'
@@ -98,17 +98,17 @@ export const Header = () => {
             >
               <motion.div
                 animate={{
-                  x: isActive && !isDevActive ? 26 : 0,
+                  x: isActive && !isDevActive ? (window.innerWidth < 1024 ? 20 : 26) : 0,
                 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                className="absolute top-1 left-1 w-5 sm:w-6 h-5 sm:h-6 bg-white rounded-full shadow-lg"
+                className="absolute top-1 left-1 w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 bg-white rounded-full shadow-lg"
               />
             </button>
             
             <button
               onClick={() => handleLabelClick('design')}
               disabled={!isActive || isTransitioning}
-              className={`text-sm sm:text-base font-medium transition-all duration-300 ${
+              className={`text-xs sm:text-sm lg:text-base font-medium transition-all duration-300 ${
                 isActive && !isDevActive
                   ? 'text-purple-600 dark:text-purple-400'
                   : isActive
@@ -128,7 +128,7 @@ export const Header = () => {
               exit={{ opacity: 0, scale: 0.8 }}
               onClick={() => setView('landing')}
               disabled={isTransitioning}
-              className="text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors disabled:opacity-50"
+              className="text-xs sm:text-sm lg:text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors disabled:opacity-50"
             >
               ← Home
             </motion.button>

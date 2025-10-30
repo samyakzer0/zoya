@@ -68,7 +68,7 @@ export function AnimeNavBar({ items, defaultActive = "Home" }: NavBarProps) {
           }}
         >
 
-          <img src="/zoya-logo1.png" alt="Zoya Logo" className="h-6 w-18" />
+          <img src="/zoya-logo1.png" alt="Zoya Logo" className="h-6 w-18 mr-34 ml-10" />
 
           {items.map((item) => {
             const Icon = item.icon

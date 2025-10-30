@@ -1,82 +1,59 @@
-import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '../../utils/transitions';
+import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { OpenSourceSlider } from "../ui/dynamic-text-slider";
 
-export const Hero = () => {
+export default function DesignHero() {
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLImageElement>) => {
+    if (imageRef.current) {
+      const rect = imageRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const x = (e.clientX - centerX) / (rect.width / 2);
+      const y = (e.clientY - centerY) / (rect.height / 2);
+      setRotation({ x: y * 15, y: x * 15 }); // Adjust 15 for tilt sensitivity
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setRotation({ x: 0, y: 0 });
+  };
+
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 via-white to-pink-50 overflow-hidden">
-      <motion.div
-        variants={staggerContainer}
-        initial="initial"
-        animate="animate"
-        className="max-w-4xl mx-auto text-center w-full"
-      >
-        <motion.h1
-          variants={fadeInUp}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6 leading-tight"
-        >
-          Creative Designer
-        </motion.h1>
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-20">
+      {/* Neobrutalism Background Elements */}
+      <div className="absolute inset-0 bg-[url('/graffiti-bg.png')] bg-cover bg-center bg-[#FAFAF9]/20">
         
-        <motion.p
-          variants={fadeInUp}
-          className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-8 sm:mb-12 max-w-2xl mx-auto px-2"
-        >
-          Crafting beautiful and intuitive digital experiences that users love
-        </motion.p>
-        
-        <motion.div
-          variants={fadeInUp}
-          className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 mb-8 sm:mb-12"
-        >
-          <div className="text-center">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-600 mb-2">50+</div>
-            <div className="text-sm sm:text-base text-gray-600">Projects Completed</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 mb-2">30+</div>
-            <div className="text-sm sm:text-base text-gray-600">Happy Clients</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-600 mb-2">5+</div>
-            <div className="text-sm sm:text-base text-gray-600">Years Experience</div>
-          </div>
-        </motion.div>
-        
-        <motion.div
-          variants={fadeInUp}
-          className="flex flex-col sm:flex-row gap-4 justify-center px-4"
-        >
-          <a
-            href="#gallery"
-            className="px-6 sm:px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl text-sm sm:text-base"
-          >
-            View Portfolio
-          </a>
-          <a
-            href="#contact"
-            className="px-6 sm:px-8 py-3 bg-white hover:bg-gray-50 text-purple-600 font-semibold rounded-lg border-2 border-purple-600 transition-colors shadow-lg text-sm sm:text-base"
-          >
-            Let's Talk
-          </a>
-        </motion.div>
-        
-        <motion.div
-          variants={fadeInUp}
-          className="mt-12 sm:mt-16"
-        >
-          <p className="text-gray-600 mb-4 text-sm sm:text-base">Specializing in</p>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 px-2">
-            {['UI/UX Design', 'Brand Identity', 'Web Design', 'Mobile Design'].map((item) => (
-              <span
-                key={item}
-                className="px-3 sm:px-4 py-2 bg-white text-purple-600 rounded-full text-xs sm:text-sm md:text-base font-medium shadow-md whitespace-nowrap"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      </motion.div>
+      </div>
+<div className="relative z-10 max-w-6xl mx-auto text-center" style={{ perspective: '1000px' }}>
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    <motion.img
+      ref={imageRef}
+      src="/zoya-logo.png"
+      alt="Zoya Logo"
+      className="mx-auto w-full h-auto"
+      style={{
+        maxWidth: '730.8px',
+        transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+        transition: 'transform 0.1s ease-out',
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      initial={{ scale: 0.8 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.5 }}
+    />
+  </motion.div>
+  <div className="mt-10 flex justify-center">
+    <OpenSourceSlider width={400} onChange={() => {}} />
+  </div>
+</div>
     </section>
   );
-};
+}
