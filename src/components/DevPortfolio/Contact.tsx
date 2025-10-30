@@ -1,133 +1,161 @@
-import { motion } from "framer-motion";
-import { HyperText } from "../ui/hyper-text";
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer } from '../../utils/transitions';
+import { useState } from 'react';
 
-export default function DevContact() {
+export const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  
+  const [submitted, setSubmitted] = useState(false);
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulate form submission
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({ name: '', email: '', message: '' });
+    }, 3000);
+  };
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  
   return (
-    <section id="contact" className="py-16 md:py-24 px-4 md:px-6 bg-black relative overflow-hidden">
-      {/* Light rays effect */}
-      <div className="absolute inset-0">
-        <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-transparent via-transparent to-royal-blue/10"></div>
-        <div className="absolute bottom-10 left-10 sm:bottom-20 sm:left-20 w-48 h-48 sm:w-96 sm:h-96 bg-royal-blue/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-10 right-10 sm:top-20 sm:right-20 w-40 h-40 sm:w-80 sm:h-80 bg-royal-blue/5 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="max-w-5xl sm:max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left - Title */}
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center sm:text-left"
+    <section id="contact" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-800">
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 text-center"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-light pixel-font royal-blue -ml-2 sm:-ml-4 md:-ml-8 lg:-ml-16">
-              <span className="inline-block text-[#FFFFF0]">LET'S</span>
-              <br />
-              <HyperText as="span" className="inline-block royal-blue">CONNECT</HyperText>
-            </h2>
-
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="pt-8"
-            >
-              <div className="text-sm text-gray-400 mb-4">
-                Available For Work
-              </div>
-
-              <div className="space-y-3">
-                <motion.a
-                  href="https://github.com/samyakzer0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 10 }}
-                  className="flex items-center gap-2 text-lg text-gray-400 hover:text-royal-blue transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                  </svg>
-                  GitHub
-                </motion.a>
-
-                <motion.a
-                  href="https://linkedin.com/in/samyakzer0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 10 }}
-                  className="flex items-center gap-2 text-lg text-gray-400 hover:text-royal-blue transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                  LinkedIn
-                </motion.a>
-
-                <motion.a
-                  href="https://x.com/samyceo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 10 }}
-                  className="flex items-center gap-2 text-lg text-gray-400 hover:text-royal-blue transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                  Twitter
-                </motion.a>
-              </div>
-            </motion.div>
-          </motion.div>
-
-    
-          {/* Right - Contact Content */}
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="space-y-6 text-center sm:text-left"
+            Get in Touch
+          </motion.h2>
+          
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg sm:text-xl text-gray-400 mb-12 sm:mb-16 text-center"
           >
-            <motion.h3
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="text-xl sm:text-2xl lg:text-3xl font-light leading-relaxed pixel-font royal-blue ml-4 sm:ml-8"
-            >
-              Ready to build the future with AI?
-            </motion.h3>
-
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <motion.a
-                href="mailto:samyak.sage@gmail.com?subject=Let's Build Something Amazing&body=Hi Samyak, I'd love to discuss a project with you."
-                whileHover={{
-                  scale: 1.05,
-                  y: -8,
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 17
-                }}
-                className="inline-block border-2 border-royal-blue text-white bg-transparent px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-medium transition-all duration-300 cursor-pointer hover:bg-royal-blue hover:text-white"
+            Let's work together on your next project
+          </motion.p>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-12">
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
+                  <a href="mailto:hello@developer.com" className="text-gray-400 hover:text-blue-400 transition-colors">
+                    hello@developer.com
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">GitHub</h3>
+                  <a href="https://github.com/developer" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                    @developer
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">LinkedIn</h3>
+                  <a href="https://linkedin.com/in/developer" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                    /in/developer
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                  placeholder="Your name"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                  placeholder="your@email.com"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  placeholder="Your message..."
+                />
+              </div>
+              
+              <button
+                type="submit"
+                disabled={submitted}
+                className="w-full px-8 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-green-600 text-white font-semibold rounded-lg transition-colors"
               >
-                Get in Touch
-              </motion.a>
-            </motion.div>
-
+                {submitted ? '✓ Message Sent!' : 'Send Message'}
+              </button>
+            </form>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-}
+};

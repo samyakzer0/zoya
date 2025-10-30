@@ -6,19 +6,17 @@ export default {
   ],
   theme: {
     extend: {
-      keyframes: {
-        "pulse-slow": {
-          '0%, 100%': {
-            transform: 'translateX(-100%)',
-          },
-          '50%': {
-            transform: 'translateX(100%)',
-          },
-        },
-      },
       animation: {
-        "pulse-slow": "pulse-slow 3s ease-in-out infinite",
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gradient': 'gradient 3s ease infinite',
       },
+      keyframes: {
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        }
+      }
     },
   },
+  plugins: [],
 }

@@ -1,77 +1,31 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants } from '../../utils/transitions';
-import DevHero from './Hero';
-import DevAbout from './About';
-import DevProjects from './Projects';
-import DevSkills from './Skills';
-import DevContact from './Contact';
-import { AnimeNavBar } from '../ui/anime-navbar';
-import NeonDivider from '../ui/neon-divider';
-import { Home, FileText, CreditCard, Info } from 'lucide-react';
-import type { ViewMode } from '../../store/portfolioStore';
-
-const items = [
-  {
-    name: "Home",
-    url: "#",
-    icon: Home,
-    view: "landing" as ViewMode,
-  },
-  {
-    name: "Dev",
-    url: "#",
-    icon: FileText,
-    view: "dev" as ViewMode,
-  },
-  {
-    name: "Design",
-    url: "#",
-    icon: CreditCard,
-    view: "design" as ViewMode,
-  },
-  {
-    name: "About",
-    url: "#",
-    icon: Info,
-    view: "landing" as ViewMode,
-  },
-];
+import { Hero } from './Hero';
+import { Projects } from './Projects';
+import { Skills } from './Skills';
+import { Contact } from './Contact';
 
 const DevPortfolioComponent = () => {
   return (
-    <>
-      <AnimeNavBar items={items} defaultActive="Dev" />
-      <motion.div
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        className="contain-paint"
-      >
-        <DevHero />
-        <div className="bg-black border-0 outline-none m-0 p-0">
-          <div className="max-w-4/5 mx-auto">
-            <NeonDivider variant="glare" height={4} className="md:h-3" />
-          </div>
-        </div>
-        <DevProjects />
-        <div className="bg-black border-0 outline-none m-0 p-0">
-          <div className="max-w-4/5 mx-auto">
-            <NeonDivider variant="glare" height={4} className="md:h-3" />
-          </div>
-        </div>
-        <DevAbout />
-        <div className="bg-black">
-          <div className="max-w-4/5 mx-auto">
-            <NeonDivider variant="glare" height={4} className="md:h-3" />
-          </div>
-        </div>
-        <DevSkills />
-        
-        <DevContact />
-      </motion.div>
-    </>
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="pt-16 sm:pt-20 contain-paint"
+    >
+      <Hero />
+      <Projects />
+      <Skills />
+      <Contact />
+      
+      <footer className="bg-gray-900 py-8 px-4 text-center text-gray-400">
+        <p className="text-sm sm:text-base">
+          © 2025 Developer Portfolio. Built with React, TypeScript & Tailwind CSS.
+        </p>
+      </footer>
+    </motion.div>
   );
 };
 

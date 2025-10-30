@@ -1,20 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 @import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-
+  
   body {
     margin: 0;
     min-width: 320px;
-    min-height: 100dvh;
+    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -24,86 +18,12 @@
   .contain-paint {
     contain: layout style paint;
   }
-
+  
   .will-change-transform {
     will-change: transform;
   }
-
+  
   .will-change-opacity {
     will-change: opacity;
   }
-
-  /* Developer Portfolio Styles */
-  .pixel-font {
-    font-family: 'Orbitron', monospace;
-    font-weight: 700;
-  }
-
-  .royal-blue {
-    color: #4169E1;
-  }
-
-  .royal-blue-bg {
-    background-color: #4169E1;
-  }
-
-  .royal-blue-border {
-    border-color: #4169E1;
-  }
-}
-
-@theme inline {
-  --color-misty-rose: #f4d8ddff;
-  --color-periwinkle: #ababe3ff;
-  --color-caf-noir: #4b3621ff;
-  --color-mindaro: #d4fa82ff;
-
-  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
-  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
-  @keyframes shimmer-slide {
-  to {
-    transform: translate(calc(100cqw - 100%), 0);
-    }
-  }
-  @keyframes spin-around {
-  0% {
-    transform: translateZ(0) rotate(0);
-    }
-  15%, 35% {
-    transform: translateZ(0) rotate(90deg);
-    }
-  65%, 85% {
-    transform: translateZ(0) rotate(270deg);
-    }
-  100% {
-    transform: translateZ(0) rotate(360deg);
-    }
-  }
-  @keyframes shine {
-    0% {
-      transform: translateX(-100%);
-    }
-    50% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-}
-
-@layer base {
-  * {
-    @apply border-gray-200 outline-gray-300/50;
-  }
-  body {
-    @apply bg-white text-gray-900;
-  }
-}
-
-/* View Transition Styles */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
 }

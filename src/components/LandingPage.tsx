@@ -1,51 +1,9 @@
 import { motion } from 'framer-motion';
 import { landingVariants } from '../utils/transitions';
 import { usePortfolioStore } from '../store/portfolioStore';
-import LightRays from './LightRays';
-import { useState, useRef, useCallback } from 'react';
-import { flushSync } from 'react-dom';
 
 export const LandingPage = () => {
   const { setView } = usePortfolioStore();
-  const [togglePosition, setTogglePosition] = useState<'dev' | 'center' | 'design'>('center');
-  const devButtonRef = useRef<HTMLButtonElement>(null);
-  const designButtonRef = useRef<HTMLButtonElement>(null);
-
-  const navigateToPortfolio = useCallback(async (view: 'dev' | 'design') => {
-    const buttonRef = view === 'dev' ? devButtonRef : designButtonRef;
-    if (!buttonRef.current) return;
-
-    // Update toggle position
-    setTogglePosition(view);
-
-    await document.startViewTransition(() => {
-      flushSync(() => {
-        setView(view);
-      });
-    }).ready;
-
-    const { top, left, width, height } = buttonRef.current.getBoundingClientRect();
-    const x = left + width / 2;
-    const y = top + height / 2;
-    const maxRadius = Math.hypot(
-      Math.max(left, window.innerWidth - left),
-      Math.max(top, window.innerHeight - top)
-    );
-
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${maxRadius}px at ${x}px ${y}px)`,
-        ],
-      },
-      {
-        duration: 400,
-        easing: "ease-in-out",
-        pseudoElement: "::view-transition-new(root)",
-      }
-    );
-  }, [setView]);
   
   return (
     <motion.div
@@ -53,26 +11,9 @@ export const LandingPage = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
-      style={{ backgroundColor: '#222021' }}
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
     >
-      {/* Light Rays Background */}
-      <div className="absolute inset-0">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="ffffff"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={1.2}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
-          opacity={1}
-        />
-      </div>
-
-      <div className="text-center px-4 sm:px-6 relative z-10">
+      <div className="text-center px-4 sm:px-6">
         <motion.div
           animate={{
             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
@@ -82,69 +23,58 @@ export const LandingPage = () => {
             repeat: Infinity,
             ease: 'linear',
           }}
-          className="mb-8 sm:mb-12"
+          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-8 sm:mb-12"
           style={{
             backgroundSize: '200% 200%',
           }}
         >
-          <motion.h1
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl  drop-shadow-2xl"
-            style={{
-              fontFamily: '"Futura", "Trebuchet MS", Arial, sans-serif',
-              color: 'rgba(255, 255, 255, 0.55)',
-            }}
+          Toggle!
+        </motion.div>
+        
+        <motion.div
+          animate={{
+            scale: [1, 1.05, 1],
+            opacity: [0.7, 1, 0.7],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 sm:mb-12"
+        >
+          Choose your view above ↑
+        </motion.div>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setView('dev')}
+            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200"
           >
-            ZOYA IMAM
-          </motion.h1>
-         </motion.div>
-         
-         {/* Toggle Switch */}
-         <div className="flex items-center justify-center gap-4 mb-8">
-           <button
-             ref={devButtonRef}
-             onClick={() => navigateToPortfolio('dev')}
-             className={`text-sm font-medium transition-colors duration-300 ${
-               togglePosition === 'dev' ? 'text-white' : 'text-white/50 hover:text-white/70'
-             }`}
-           >
-             Dev
-           </button>
-           
-           <div 
-             className="relative w-20 h-8 bg-gray-700 rounded-full cursor-pointer"
-             onClick={(e) => {
-               const rect = e.currentTarget.getBoundingClientRect();
-               const clickX = e.clientX - rect.left;
-               const centerX = rect.width / 2;
-               
-               if (clickX < centerX) {
-                 navigateToPortfolio('dev');
-               } else {
-                 navigateToPortfolio('design');
-               }
-             }}
-           >
-             <motion.div
-               animate={{
-                 x: togglePosition === 'dev' ? 0 : togglePosition === 'center' ? 24 : 48,
-               }}
-               transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-               className="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-lg"
-             />
-           </div>
-           
-           <button
-             ref={designButtonRef}
-             onClick={() => navigateToPortfolio('design')}
-             className={`text-sm font-medium transition-colors duration-300 ${
-               togglePosition === 'design' ? 'text-white' : 'text-white/50 hover:text-white/70'
-             }`}
-           >
-             Design
-           </button>
-         </div>
-    
-       </div>
+            View Developer Portfolio
+          </motion.button>
+          
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setView('design')}
+            className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200"
+          >
+            View Designer Portfolio
+          </motion.button>
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="mt-12 sm:mt-16 text-sm text-gray-500 dark:text-gray-600"
+        >
+          Seamlessly switch between portfolios with the toggle above
+        </motion.div>
+      </div>
     </motion.div>
   );
 };

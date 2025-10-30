@@ -29,7 +29,7 @@ export const Contact = () => {
   };
   
   return (
-    <section id="contact" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-misty-rose/50 via-white to-periwinkle/50">
+    <section id="contact" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 via-white to-pink-50 overflow-hidden">
       <div className="max-w-5xl mx-auto">
         <motion.div
           variants={staggerContainer}
@@ -39,76 +39,76 @@ export const Contact = () => {
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-periwinkle to-misty-rose bg-clip-text text-transparent mb-4 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4 text-center px-2"
           >
             Let's Create Together
           </motion.h2>
           
           <motion.p
             variants={fadeInUp}
-            className="text-lg sm:text-xl text-gray-600 mb-12 sm:mb-16 text-center max-w-2xl mx-auto"
+            className="text-lg sm:text-xl text-gray-600 mb-12 sm:mb-16 text-center max-w-2xl mx-auto px-2"
           >
             Have a project in mind? Let's bring your vision to life
           </motion.p>
           
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
             {/* Contact Info */}
             <motion.div variants={fadeInUp} className="lg:col-span-2 space-y-6">
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
+              <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Get in Touch</h3>
                 
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-periwinkle to-misty-rose rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                      <a href="mailto:hello@designer.com" className="text-gray-600 hover:text-periwinkle transition-colors text-sm sm:text-base">
+                    <div className="min-w-0">
+                      <h4 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Email</h4>
+                      <a href="mailto:hello@designer.com" className="text-gray-600 hover:text-purple-600 transition-colors text-xs sm:text-sm md:text-base break-all">
                         hello@designer.com
                       </a>
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-periwinkle to-misty-rose rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                       </svg>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Instagram</h4>
-                      <a href="https://instagram.com/designer" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-periwinkle transition-colors text-sm sm:text-base">
+                    <div className="min-w-0">
+                      <h4 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Instagram</h4>
+                      <a href="https://instagram.com/designer" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-purple-600 transition-colors text-xs sm:text-sm md:text-base break-all">
                         @designer
                       </a>
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-periwinkle to-misty-rose rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
                       </svg>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">LinkedIn</h4>
-                      <a href="https://linkedin.com/in/designer" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-periwinkle transition-colors text-sm sm:text-base">
+                    <div className="min-w-0">
+                      <h4 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">LinkedIn</h4>
+                      <a href="https://linkedin.com/in/designer" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-purple-600 transition-colors text-xs sm:text-sm md:text-base break-all">
                         /in/designer
                       </a>
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-periwinkle to-misty-rose rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.628 0-12 5.373-12 12s5.372 12 12 12 12-5.373 12-12-5.372-12-12-12zm9.885 11.441c-2.575-.422-4.943-.445-7.103-.073-.244-.563-.497-1.125-.767-1.68 2.31-1 4.165-2.358 5.548-4.082 1.35 1.594 2.197 3.619 2.322 5.835zm-3.842-7.282c-1.205 1.554-2.868 2.783-4.986 3.68-1.016-1.861-2.178-3.676-3.488-5.438.779-.197 1.591-.314 2.431-.314 2.275 0 4.368.779 6.043 2.072zm-10.516-.993c1.331 1.742 2.511 3.538 3.537 5.381-2.43.715-5.331 1.082-8.684 1.105.692-2.835 2.601-5.193 5.147-6.486zm-5.44 8.834l.013-.256c3.849-.005 7.169-.448 9.95-1.322.233.475.456.952.67 1.432-3.38 1.057-6.165 3.222-8.337 6.48-1.432-1.719-2.296-3.927-2.296-6.334zm3.829 7.81c1.969-3.088 4.482-5.098 7.598-6.027.928 2.42 1.609 4.91 2.043 7.46-1.289.421-2.684.648-4.139.648-2.312 0-4.431-.744-6.502-2.081zm11.586.43c-.438-2.353-1.08-4.653-1.92-6.897 1.876-.265 3.94-.196 6.199.196-.437 2.786-2.028 5.192-4.279 6.701z"/>
                       </svg>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Dribbble</h4>
-                      <a href="https://dribbble.com/designer" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-periwinkle transition-colors text-sm sm:text-base">
+                    <div className="min-w-0">
+                      <h4 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Dribbble</h4>
+                      <a href="https://dribbble.com/designer" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-purple-600 transition-colors text-xs sm:text-sm md:text-base break-all">
                         @designer
                       </a>
                     </div>
@@ -119,8 +119,8 @@ export const Contact = () => {
             
             {/* Contact Form */}
             <motion.div variants={fadeInUp} className="lg:col-span-3">
-              <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Name *
@@ -132,7 +132,7 @@ export const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-periwinkle focus:border-transparent transition-all"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-sm sm:text-base"
                       placeholder="Your name"
                     />
                   </div>
@@ -148,7 +148,7 @@ export const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-periwinkle focus:border-transparent transition-all"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-sm sm:text-base"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -163,7 +163,7 @@ export const Contact = () => {
                     name="project"
                     value={formData.project}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-periwinkle focus:border-transparent transition-all"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-sm sm:text-base"
                   >
                     <option value="">Select a project type</option>
                     <option value="brand">Brand Identity</option>
@@ -185,7 +185,7 @@ export const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-periwinkle focus:border-transparent transition-all resize-none"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none text-sm sm:text-base"
                     placeholder="Tell me about your project..."
                   />
                 </div>
@@ -193,7 +193,7 @@ export const Contact = () => {
                 <button
                   type="submit"
                   disabled={submitted}
-                  className="w-full px-8 py-4 bg-gradient-to-r from-periwinkle to-misty-rose hover:from-periwinkle hover:to-misty-rose disabled:from-green-600 disabled:to-green-600 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl"
+                  className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:from-green-600 disabled:to-green-600 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl text-sm sm:text-base"
                 >
                   {submitted ? '✓ Message Sent!' : 'Send Message'}
                 </button>

@@ -65,7 +65,7 @@ export const Header = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo/Brand */}
           <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-           
+            Portfolio
           </div>
           
           {/* Toggle Switch */}

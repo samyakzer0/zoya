@@ -1,97 +1,152 @@
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer } from '../../utils/transitions';
+import { useRef } from 'react';
 
-const caseStudies = [
+interface CaseStudy {
+  id: number;
+  title: string;
+  client: string;
+  year: string;
+  role: string;
+  description: string;
+  gradient: string;
+}
+
+const caseStudies: CaseStudy[] = [
   {
-    title: "Vibrant Mobile App",
-    client: "TechStart Inc",
-    year: "2024",
-    description: "Complete rebrand and mobile app design for a growing tech startup",
-    color: "bg-misty-rose",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop"
+    id: 1,
+    title: 'FinTech App Redesign',
+    client: 'MoneyFlow Inc.',
+    year: '2024',
+    role: 'Lead Designer',
+    description: 'Complete redesign of mobile banking app, improving user engagement by 60% and reducing transaction time by 40%.',
+    gradient: 'from-blue-500 to-cyan-500',
   },
   {
-    title: "Bold E-commerce",
-    client: "Fashion Forward",
-    year: "2024",
-    description: "Modern e-commerce platform with unique shopping experience",
-    color: "bg-periwinkle",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop"
+    id: 2,
+    title: 'Healthcare Platform',
+    client: 'MediCare Plus',
+    year: '2024',
+    role: 'UX/UI Designer',
+    description: 'Designed an intuitive patient management system that streamlined workflows for 100+ medical facilities.',
+    gradient: 'from-green-500 to-emerald-500',
   },
   {
-    title: "Creative Agency Site",
-    client: "Studio X",
-    year: "2023",
-    description: "Award-winning portfolio website with interactive animations",
-    color: "bg-mindaro",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&auto=format&fit=crop"
-  }
+    id: 3,
+    title: 'E-Learning Experience',
+    client: 'EduTech Global',
+    year: '2023',
+    role: 'Product Designer',
+    description: 'Created an engaging learning platform that increased student retention by 75% through gamification.',
+    gradient: 'from-purple-500 to-pink-500',
+  },
+  {
+    id: 4,
+    title: 'Travel Booking App',
+    client: 'Wanderlust Co.',
+    year: '2023',
+    role: 'UI Designer',
+    description: 'Designed a seamless booking experience that increased conversions by 45% and won App of the Year.',
+    gradient: 'from-orange-500 to-red-500',
+  },
 ];
 
-export default function DesignCaseStudies() {
+export const CaseStudies = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
         >
-          <h2 className="text-5xl md:text-7xl font-black mb-4 inline-block px-8 py-4 bg-periwinkle text-white border-4 border-black transform rotate-1"
-            style={{ boxShadow: "8px 8px 0px #000" }}>
-            CASE STUDIES
-          </h2>
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center px-2"
+          >
+            Case Studies
+          </motion.h2>
+          
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg sm:text-xl text-gray-600 mb-12 sm:mb-16 text-center px-2"
+          >
+            Deep dives into selected projects
+          </motion.p>
         </motion.div>
-
-        <div className="space-y-12">
-          {caseStudies.map((study, index) => (
-            <motion.div
-              key={study.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="group"
-            >
-              <div className={`grid md:grid-cols-2 gap-8 p-8 rounded-3xl border-4 border-black ${
-                index % 2 === 0 ? 'bg-[#FAFAF9]' : 'bg-white'
-              }`} style={{ boxShadow: "12px 12px 0px #000" }}>
-                <div className={`${index % 2 === 0 ? 'order-1' : 'order-2'}`}>
-                  <div className="relative overflow-hidden rounded-2xl border-4 border-black"
-                    style={{ boxShadow: "6px 6px 0px #000" }}>
-                    <motion.img
-                      src={study.image}
-                      alt={study.title}
-                      className="w-full h-80 object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.4 }}
-                    />
+        
+        {/* Horizontal Scroll Container */}
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            className="flex gap-4 sm:gap-6 lg:gap-8 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {caseStudies.map((study, index) => (
+              <motion.div
+                key={study.id}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex-shrink-0 w-[90vw] sm:w-[70vw] lg:w-[500px] snap-center"
+              >
+                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 h-full">
+                  <div className={`h-40 sm:h-48 md:h-64 bg-gradient-to-br ${study.gradient} flex items-center justify-center p-4`}>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-center px-4">
+                      {study.title}
+                    </h3>
+                  </div>
+                  
+                  <div className="p-4 sm:p-6 md:p-8">
+                    <div className="flex flex-wrap gap-3 sm:gap-4 mb-4 sm:mb-6">
+                      <div>
+                        <div className="text-xs sm:text-sm text-gray-500 mb-1">Client</div>
+                        <div className="text-sm sm:text-base font-semibold text-gray-900">{study.client}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs sm:text-sm text-gray-500 mb-1">Year</div>
+                        <div className="text-sm sm:text-base font-semibold text-gray-900">{study.year}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs sm:text-sm text-gray-500 mb-1">Role</div>
+                        <div className="text-sm sm:text-base font-semibold text-gray-900">{study.role}</div>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+                      {study.description}
+                    </p>
+                    
+                    <button className="w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl text-sm sm:text-base">
+                      Read Full Case Study →
+                    </button>
                   </div>
                 </div>
-
-                <div className={`flex flex-col justify-center ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
-                  <div className={`inline-block w-fit px-6 py-2 ${study.color} rounded-xl border-4 border-black mb-4`}
-                    style={{ boxShadow: "4px 4px 0px #000" }}>
-                    <span className="font-black">{study.year}</span>
-                  </div>
-                  <h3 className="text-4xl md:text-5xl font-black mb-4">{study.title}</h3>
-                  <p className="text-lg font-bold text-gray-700 mb-4">{study.client}</p>
-                  <p className="text-lg mb-6">{study.description}</p>
-                  <motion.button
-                    className="flex items-center gap-2 px-6 py-3 bg-black text-white font-black rounded-xl border-4 border-black w-fit"
-                    style={{ boxShadow: "4px 4px 0px #000" }}
-                    whileHover={{ boxShadow: "6px 6px 0px #000", y: -2 }}
-                    whileTap={{ boxShadow: "2px 2px 0px #000", y: 0 }}
-                  >
-                    View Case Study
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Scroll Indicator */}
+          <div className="flex justify-center mt-6 sm:mt-8 gap-2">
+            {caseStudies.map((_, index) => (
+              <div
+                key={index}
+                className="w-2 h-2 rounded-full bg-gray-300"
+              />
+            ))}
+          </div>
         </div>
+        
+        <style>{`
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
       </div>
     </section>
   );
-}
+};

@@ -1,6 +1,7 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { usePortfolioStore } from './store/portfolioStore';
+import { Header } from './components/Header';
 import { LandingPage } from './components/LandingPage';
 
 // Lazy load portfolio components for better performance
@@ -42,6 +43,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
+      <Header />
+      
       <AnimatePresence mode="wait">
         {currentView === 'landing' && (
           <LandingPage key="landing" />
